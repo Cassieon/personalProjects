@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>7DayForcast</title>
+        <link rel="stylesheet" href="weather.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+        
+        <meta>
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body { overflow: hidden; }
+        #clouds-canvas {
+            width: 100%;
+            height: 100vh;
+            }
+        </style>
+           
+    </head>
+    <body>
+
+        <div class="body" id="clouds-canvas">
+            <!-- TITLE OF PAGE -->
+            
+                <div><h1 class="city">Atlanta, GA</h1></div>
+            
+            <!-- MAIN CONTAINER -->
+                        <div class="main">
+                            
+            <!-- 7 DAYS OF THE WEEK -->
+                            <div class="days" id="day1">
+                                MONDAY
+                                <div class="temp" id="temp1">63°</div>
+                                <div class="conditions" id="conditions1">Sunny</div>
+                                <div class="icon"></div>
+                                <div class="HL" id="HL1">High Low</div>
+                            </div>
+                            <div class="days" id="day2">
+                                TUESDAY
+                                <div class="temp" id="temp2">63°</div>
+                                <div class="conditions" id="conditions2">Cloudy</div>
+                                <div class="icon"></div>
+                                <div class="HL" id="HL2">High Low</div>
+                            </div>
+                            <div class="days" id="day3">
+                                WENESDAY
+                                <div class="temp" id="temp3">63°</div>
+                                <div class="conditions" id="conditions3">Sunny</div>
+                                <div class="icon"></div>
+                                <div class="HL"id="HL3">High Low</div>
+                            </div>
+                            <div class="days" id="day4">
+                                THURSDAY
+                                <div class="temp" id="temp4">63°</div>
+                                <div class="conditions" id="conditions4">Partly Cloudy</div>
+                                <div class="icon"></div>
+                                <div class="HL" id="HL4">High Low</div>
+
+                            </div>
+                            <div class="days" id="day5">
+                                FRIDAY
+                                <div class="temp" id="temp5">63°</div>
+                                <div class="conditions" id="conditions5">Rain</div>
+                                <div class="icon"></div>
+                                <div class="HL" id="HL5">High Low</div>
+
+                            </div>
+                            <div class="days" id="day6">
+                                SATURDAY
+                                <div class="temp" id="temp6">63°</div>
+                                <div class="conditions" id="conditions6">Snow</div>
+                                <div class="icon"></div>
+                                <div class="HL" id="HL6">High Low</div>
+
+                            </div>
+                            <div class="days" id="day7">
+                                SUNDAY
+                                <div class="temp" id="temp7">63°</div>
+                                <div class="conditionals" id="conditions7">Sunny</div>
+                                <div class="icon"></div>
+                                <div class="temp"id="HL7">High Low</div>
+
+                            </div>
+                        </div>
+        
+                <!-- BACKGROUND ANIMATION -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.clouds.min.js"></script>
+            <script type="text/javascript">
+                VANTA.CLOUDS ({
+                    el: "#clouds-canvas",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    skyColor: 0x6895d7,
+                    scale: 1.00,
+                    scaleMobile: 1.00,
+                    speed: 1.00
+                })
+            </script>
+            
+        </div>
+    </body>
+
+
+</html>
