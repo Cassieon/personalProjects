@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.querySelector('#start-button') //could use getElementById as well
     //telling javaScript the width of our squares and grid
     const width = 10
+    let nextRandom = 0
 
     //the tetrominoes
     const lTetromino = [   //each array is a diff tetromino position 
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let random = Math.floor(Math.random()*theTetrominoes.length)
     console.log(random)
 
-    //pass random through random to get random tetrominoe
+    //pass random through random to get random tetrominoes
     let current = theTetrominoes [random][currentRotation] //grabs the first tetrominoe and its first position
     //write a function called draw
     //and get current array
@@ -118,10 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
             current.forEach(index => squares[currentPosition + index].classList.add('taken'))
             //then immediately select a new tetromino to be the current tetremino
             //start a new falling tetremino
-            random = Math.floor(Math.random() * theTetrominoes.length)
+            random = nextRandom// put in place so that next radom shape in min grid matches the next random shape in main grid
+            nextRandom = Math.floor(Math.random() * theTetrominoes.length)
             current = theTetrominoes[random][currentRotation]
             currentPosition = 4
             draw()
+            miniDisplay()
         }
     }
 
@@ -162,14 +165,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     //write a function to rotate the tetrimino
+    //needs to skip to the next rotation in the current rotation array
     function rotate() {
         undraw() //start with undraw to undraw shape
-        currentRotation ++
+        currentRotation ++//moves to the next item in arry with incrament opperator 
         if(currentRotation === current.length) { //if current rotation gets to 4, go back to 0
             currentRotation = 0
         }
         current = theTetrominoes[random][currentRotation]
         draw()
+    }
+
+    //displaying next shape in mini grid
+    const displaySquares = document.querySelectorAll('.miniGrid div') //could use array from 
+    const displayWidth = 4 // how big the gird is 4x4
+    let displayIndex = 0 
+
+    //need and array showing all tetrominoes in their first rotation
+    const nextTetromino = [
+        [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
+        [0, displayWidth, displayWidth+1, displayWidth*2+1], //zTetrmino
+        [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
+        [0, 1, displayWidth, displayWidth+1], //oTetromino
+        [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
+    ]
+
+    //write a function that will display shape in mini grid
+    function miniDisplay() {
+        displaySquares.forEach(square => { //using forEach to get each squre 
+            square.classList.remove('tetromino') //remove all traces of shave from entire grid
+        })
+        nextTetromino[nextRandom].forEach( index => { //adding the shape 
+            displaySquares[displayIndex + index].classList.add('tetromino')
+        })
     }
     
 
